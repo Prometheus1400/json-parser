@@ -159,9 +159,7 @@ pub const JsonValue = union(enum) {
 };
 
 test "json parser simple test" {
-    var dba: std.heap.DebugAllocator(.{}) = .init;
-    defer std.debug.assert(dba.deinit() == .ok);
-    const allocator = dba.allocator();
+    const allocator = std.testing.allocator;
 
     const input =
         \\ {
